@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final defaultTextStyle = TextStyle(fontFamily: 'Bakh');
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -29,10 +30,16 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        textTheme: TextTheme(bodyMedium: TextStyle(fontFamily: 'Bakh')),
+        textTheme: TextTheme(
+          bodyMedium: defaultTextStyle,
+          titleLarge: defaultTextStyle.copyWith(fontWeight: FontWeight.bold), 
+          bodySmall: defaultTextStyle
+          ),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Directionality(
+        textDirection: TextDirection.rtl,
+        child: MyHomePage(title: 'فروشگاه نایکی')),
     );
   }
 }
@@ -106,8 +113,12 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
+            Text(
               'دکمه پلاس را لمس کنید',
+            ),
+             Text(
+              'دکمه پلاس را لمس کنید',
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             Text(
               '$_counter',
