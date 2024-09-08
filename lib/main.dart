@@ -1,3 +1,4 @@
+import 'package:ecommerce/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final defaultTextStyle = TextStyle(fontFamily: 'Bakh');
+    const defaultTextStyle = TextStyle(fontFamily: 'Bakh',color:LightThemeColors.primaryTextColor );
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -29,11 +30,15 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.light(
+          primary: LightThemeColors.primaryColor,
+          secondary: LightThemeColors.secondaryColor,
+
+        ),
         textTheme: TextTheme(
           bodyMedium: defaultTextStyle,
           titleLarge: defaultTextStyle.copyWith(fontWeight: FontWeight.bold), 
-          bodySmall: defaultTextStyle
+          bodySmall: defaultTextStyle.apply(color: LightThemeColors.secondaryTextColor)
           ),
         useMaterial3: true,
       ),
