@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.light(
           primary: LightThemeColors.primaryColor,
           secondary: LightThemeColors.secondaryColor,
+          onSecondary: Colors.white;
 
         ),
         textTheme: TextTheme(
