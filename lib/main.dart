@@ -1,3 +1,4 @@
+import 'package:ecommerce/data/repository/product_repository.dart';
 import 'package:ecommerce/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -30,11 +31,10 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.light(
+        colorScheme: const ColorScheme.light(
           primary: LightThemeColors.primaryColor,
           secondary: LightThemeColors.secondaryColor,
-          onSecondary: Colors.white;
-
+          onSecondary: Colors.white
         ),
         textTheme: TextTheme(
           bodyMedium: defaultTextStyle,
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           ),
         useMaterial3: true,
       ),
-      home: Directionality(
+      home: const Directionality(
         textDirection: TextDirection.rtl,
         child: MyHomePage(title: 'فروشگاه نایکی')),
     );
@@ -84,6 +84,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    productRepository.getAll(0).then((value){
+      debugPrint(value.toString());
+    }).catchError((e){
+        debugPrint(e.toString());
+    });
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -119,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'دکمه پلاس را لمس کنید',
             ),
              Text(
