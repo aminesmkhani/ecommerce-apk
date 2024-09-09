@@ -2,12 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:ecommerce/common/exeption.dart';
 import 'package:ecommerce/data/product.dart';
 
-abstract class IProductRepository {
+abstract class IProductDataSource {
   Future<List<ProductEntity>> getAll(int sort);
   Future<List<ProductEntity>> search(String searchTerm);
 }
 
-class ProductRemoteDataSource implements IProductRepository {
+class ProductRemoteDataSource implements IProductDataSource {
   late final Dio httpClient;
   @override
   Future<List<ProductEntity>> getAll(int sort) async {
