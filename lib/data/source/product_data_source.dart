@@ -8,7 +8,9 @@ abstract class IProductDataSource {
 }
 
 class ProductRemoteDataSource implements IProductDataSource {
-  late final Dio httpClient;
+  final Dio httpClient;
+
+  ProductRemoteDataSource(this.httpClient);
   @override
   Future<List<ProductEntity>> getAll(int sort) async {
     final response = await httpClient.get('product/list?sort=$sort');
@@ -21,7 +23,7 @@ class ProductRemoteDataSource implements IProductDataSource {
   }
 
   @override
-  Future<List<ProductEntity>> search(String searchTerm) async{
+  Future<List<ProductEntity>> search(String searchTerm) async {
     final response = await httpClient.get('product/search?q=$searchTerm');
     validateResponse(response);
     final products = <ProductEntity>[];
